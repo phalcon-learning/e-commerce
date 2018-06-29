@@ -7,6 +7,9 @@ error_reporting(E_ALL);
 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
+define('PRODUCTS_PATH', BASE_PATH . '/products');
+define('ORDER_PATH', BASE_PATH . '/order');
+define('TRANSACTION_PATH', BASE_PATH . '/transaction');
 
 try {
 
