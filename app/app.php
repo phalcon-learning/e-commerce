@@ -7,11 +7,21 @@
 /**
  * Add your routes here
  */
+use Phalcon\Mvc\Micro\Collection;
+
+$collection = new Collection();
+
+$collection->setHandler(
+  new HelloController()
+);
+
 $app->get('/', function () {
     echo $this['view']->render('index');
 });
 
-$app->get('/hello/{name}', 'HelloController::says');
+$collection->get('/hello/edit/{id}', 'edit');
+
+$app->mount($collection);
 
 /**
  * Not found handler
