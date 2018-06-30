@@ -5,11 +5,11 @@ use Phalcon\Db\Index;
 use Phalcon\Db\Reference;
 use Phalcon\Mvc\Model\Migration;
 
-class TransactionMigration_100 extends Migration
+class ProductMigration_102 extends Migration
 {
     public function morph()
     {
-        $this->morphTable('transaction', [
+        $this->morphTable('product', [
                 'columns' => [
                     new Column(
                         'id',
@@ -23,36 +23,59 @@ class TransactionMigration_100 extends Migration
                         ]
                     ),
                     new Column(
-                        'created_at',
+                        'qty_avaible',
                         [
-                            'type'      => Column::TYPE_DATETIME,
-                            'notNull'   => true
+                            'type'    => Column::TYPE_INTEGER,
+                            'notNull' => true,
+                            'size'    => 25,
                         ]
                     ),
                     new Column(
-                        'updated_at',
+                        'name',
                         [
-                            'type'      => Column::TYPE_DATETIME,
-                            'notNull'   => true
+                            'type'    => Column::TYPE_VARCHAR,
+                            'notNull' => true,
+                            'size'    => 50,
+                        ]
+                    ),
+                    new Column(
+                        'is_promoted',
+                        [
+                            'type'    => Column::TYPE_BOOLEAN,
+                            'notNull' => true,
+                            'size'    => 50,
+                        ]
+                    ),
+                    new Column(
+                        'created_at',
+                        [
+                            'type'    => Column::TYPE_DATETIME,
+                            'notNull' => true
                         ]
                     ),
                     new Column(
                         'created_by',
                         [
-                            'type' => Column::TYPE_INTEGER,
-                            'unsigned' => true,
-                            'notNull' => true,
-                            'size' => 10,
+                          'type'      => Column::TYPE_INTEGER,
+                          'notNull'   => true,
+                          'unsigned'  => true,
+                          'size'      => 10
+                        ]
+                    ),
+                    new Column(
+                        'updated_at',
+                        [
+                            'type'    => Column::TYPE_DATETIME,
+                            'notNull' => true
                         ]
                     ),
                     new Column(
                         'updated_by',
                         [
-                            'type' => Column::TYPE_INTEGER,
-                            'unsigned' => true,
-                            'notNull' => true,
-                            'size' => 10,
-
+                          'type'      => Column::TYPE_INTEGER,
+                          'notNull'   => true,
+                          'unsigned'  => true,
+                          'size'      => 10
                         ]
                     ),
                 ],
@@ -61,29 +84,26 @@ class TransactionMigration_100 extends Migration
                     new Index('created_by', ['created_by']),
                     new Index('updated_by', ['updated_by'])
                 ],
-                'references' => [
-                    new Reference(
-                        'created_by_ibfk_1',
+                'references'  => [
+                    new Reference (
+                        'product_created_by_ibfk_1',
                         [
-                            'referencedSchema'  => 'invo',
                             'referencedTable'   => 'user',
                             'columns'           => ['created_by'],
-                            'referencedColumns'  => ['id'],
-                            
+                            'referencedColumns' => ['id'],
                         ]
                     ),
-                    new Reference(
-                        'updated_by_ibfk_1',
+                    new Reference (
+                        'product_updated_by_ibfk_1',
                         [
-                            'referencedSchema'  => 'invo',
                             'referencedTable'   => 'user',
                             'columns'           => ['updated_by'],
-                            'referencedColumns'  => ['id'],
+                            'referencedColumns' => ['id'],
                         ]
                     ),
                 ],
                 'options' => [
-                    'TABLE_TYPE'        => 'BASE_TABLE',
+                    'TABLE_TYPE'        => 'BASE TABLE',
                     'AUTO_INCREMENT'    => '1',
                     'ENGINE'            => 'InnoDB',
                     'TABLE_COLLATION'   => 'latin1_swedish_ci'
@@ -101,5 +121,5 @@ class TransactionMigration_100 extends Migration
     {
 
     }
-}
 
+}
