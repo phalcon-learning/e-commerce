@@ -39,19 +39,19 @@ class TransactionMigration_101 extends Migration
                     new Column(
                         'created_by',
                         [
-                            'type' => Column::TYPE_INTEGER,
-                            'unsigned' => true,
-                            'notNull' => true,
-                            'size' => 10
+                            'type'      => Column::TYPE_INTEGER,
+                            'unsigned'  => true,
+                            'notNull'   => true,
+                            'size'      => 10
                         ]
                     ),
                     new Column(
                         'updated_by',
                         [
-                            'type' => Column::TYPE_INTEGER,
-                            'unsigned' => true,
-                            'notNull' => true,
-                            'size' => 10
+                            'type'      => Column::TYPE_INTEGER,
+                            'unsigned'  => true,
+                            'notNull'   => true,
+                            'size'      => 10
                         ]
                     ),
                 ],

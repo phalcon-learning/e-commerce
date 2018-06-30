@@ -54,19 +54,19 @@ class ProductMigration_102 extends Migration
                         ]
                     ),
                     new Column(
+                        'updated_at',
+                        [
+                            'type'    => Column::TYPE_DATETIME,
+                            'notNull' => true
+                        ]
+                    ),
+                    new Column(
                         'created_by',
                         [
                           'type'      => Column::TYPE_INTEGER,
                           'notNull'   => true,
                           'unsigned'  => true,
                           'size'      => 10
-                        ]
-                    ),
-                    new Column(
-                        'updated_at',
-                        [
-                            'type'    => Column::TYPE_DATETIME,
-                            'notNull' => true
                         ]
                     ),
                     new Column(
